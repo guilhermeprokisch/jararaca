@@ -33,8 +33,8 @@
 #endif
 
 #define COPYRIGHT \
-    "Type \"help\", \"copyright\", \"credits\" or \"license\" " \
-    "for more information."
+    "Digite \"help\", \"copyright\", \"credits\" ou \"license\" " \
+    "para mais informações."
 
 #ifdef __cplusplus
 extern "C" {
@@ -1236,9 +1236,10 @@ pymain_header(_PyMain *pymain)
         return;
     }
 
-    fprintf(stderr, "Python %s on %s\n", Py_GetVersion(), Py_GetPlatform());
+    fprintf(stderr, "Jararaca %s\n", PY_VERSION);
     if (!Py_NoSiteFlag) {
-        fprintf(stderr, "%s\n", COPYRIGHT);
+        //fprintf(stderr, "%s\n", COPYRIGHT);
+        fprintf(stderr, "Seja Bem-Vindo\n");
     }
 }
 
@@ -2905,7 +2906,7 @@ pymain_cmdline_impl(_PyMain *pymain, _PyCoreConfig *config,
     }
 
     if (cmdline->print_version) {
-        printf("Python %s\n",
+        printf("Jaraca %s\n",
                (cmdline->print_version >= 2) ? Py_GetVersion() : PY_VERSION);
         return 1;
     }

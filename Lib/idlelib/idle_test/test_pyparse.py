@@ -379,7 +379,7 @@ class PyParseTest(unittest.TestCase):
 
     def test_is_block_opener(self):
         yes = self.assertTrue
-        no = self.assertFalse
+        noo = self.assertFalse
         p = self.parser
         setcode = p.set_code
         opener = p.is_block_opener
@@ -392,12 +392,12 @@ class PyParseTest(unittest.TestCase):
             TestInfo('a:\n', yes),
             TestInfo('):\n', yes),
             TestInfo('(:\n', yes),
-            TestInfo('":\n', no),
-            TestInfo('\n   def function1(self, a,\n', no),
-            TestInfo('def function1(self, a):\n    pass\n', no),
-            TestInfo('# A comment:\n', no),
-            TestInfo('"""A docstring:\n', no),
-            TestInfo('"""A docstring:\n', no),
+            TestInfo('":\n', noo),
+            TestInfo('\n   def function1(self, a,\n', noo),
+            TestInfo('def function1(self, a):\n    pass\n', noo),
+            TestInfo('# A comment:\n', noo),
+            TestInfo('"""A docstring:\n', noo),
+            TestInfo('"""A docstring:\n', noo),
             )
 
         for test in tests:
@@ -407,7 +407,7 @@ class PyParseTest(unittest.TestCase):
 
     def test_is_block_closer(self):
         yes = self.assertTrue
-        no = self.assertFalse
+        noo = self.assertFalse
         p = self.parser
         setcode = p.set_code
         closer = p.is_block_closer
@@ -421,11 +421,11 @@ class PyParseTest(unittest.TestCase):
             TestInfo('pass    \n', yes),
             TestInfo('pass\t\n', yes),
             TestInfo('return #\n', yes),
-            TestInfo('raised\n', no),
-            TestInfo('returning\n', no),
-            TestInfo('# return\n', no),
-            TestInfo('"""break\n', no),
-            TestInfo('"continue\n', no),
+            TestInfo('raised\n', noo),
+            TestInfo('returning\n', noo),
+            TestInfo('# return\n', noo),
+            TestInfo('"""break\n', noo),
+            TestInfo('"continue\n', noo),
             TestInfo('def function1(self, a):\n    pass\n', yes),
             )
 

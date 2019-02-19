@@ -270,12 +270,12 @@ class UtilTestCase(support.EnvironGuard, unittest.TestCase):
 
     def test_strtobool(self):
         yes = ('y', 'Y', 'yes', 'True', 't', 'true', 'True', 'On', 'on', '1')
-        no = ('n', 'no', 'f', 'false', 'off', '0', 'Off', 'No', 'N')
+        noo = ('n', 'no', 'f', 'false', 'off', '0', 'Off', 'No', 'N')
 
         for y in yes:
             self.assertTrue(strtobool(y))
 
-        for n in no:
+        for n in noo:
             self.assertFalse(strtobool(n))
 
     def test_rfc822_escape(self):

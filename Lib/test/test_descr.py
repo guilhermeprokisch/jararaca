@@ -2149,9 +2149,9 @@ order (MRO) for bases """
         del r
         class NoWeak(object):
             __slots__ = ['foo']
-        no = NoWeak()
+        noo = NoWeak()
         try:
-            weakref.ref(no)
+            weakref.ref(noo)
         except TypeError as msg:
             self.assertIn("weak reference", str(msg))
         else:
