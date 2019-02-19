@@ -2232,6 +2232,10 @@ PyDoc_STRVAR(builtin_sorted__doc__,
 #define BUILTIN_SORTED_METHODDEF    \
     {"sorted", (PyCFunction)builtin_sorted, METH_FASTCALL | METH_KEYWORDS, builtin_sorted__doc__},
 
+#define BUILTIN_SORTED_METHODDEF_PT    \
+    {"ordena", (PyCFunction)builtin_sorted, METH_FASTCALL | METH_KEYWORDS, builtin_sorted__doc__},
+
+
 static PyObject *
 builtin_sorted(PyObject *self, PyObject *const *args, Py_ssize_t nargs, PyObject *kwnames)
 {
@@ -2730,44 +2734,86 @@ static PyMethodDef builtin_methods[] = {
      METH_FASTCALL | METH_KEYWORDS, build_class_doc},
     {"__import__",      (PyCFunction)builtin___import__, METH_VARARGS | METH_KEYWORDS, import_doc},
     BUILTIN_ABS_METHODDEF
+    BUILTIN_ABS_METHODDEF_PT
+
     BUILTIN_ALL_METHODDEF
+    BUILTIN_ALL_METHODDEF_PT
+
     BUILTIN_ANY_METHODDEF
+    BUILTIN_ANY_METHODDEF_PT
+
     BUILTIN_ASCII_METHODDEF
     BUILTIN_BIN_METHODDEF
     {"breakpoint",      (PyCFunction)builtin_breakpoint, METH_FASTCALL | METH_KEYWORDS, breakpoint_doc},
+    
     BUILTIN_CALLABLE_METHODDEF
+    BUILTIN_CALLABLE_METHODDEF_PT
+
     BUILTIN_CHR_METHODDEF
+
+
     BUILTIN_COMPILE_METHODDEF
+    
     BUILTIN_DELATTR_METHODDEF
+    BUILTIN_DELATTR_METHODDEF_PT
+
     {"dir",             builtin_dir,        METH_VARARGS, dir_doc},
     BUILTIN_DIVMOD_METHODDEF
+    
     BUILTIN_EVAL_METHODDEF
     BUILTIN_EXEC_METHODDEF
+   
     BUILTIN_FORMAT_METHODDEF
+    BUILTIN_FORMAT_METHODDEF_PT
+
     {"getattr",         (PyCFunction)builtin_getattr, METH_FASTCALL, getattr_doc},
+    
     BUILTIN_GLOBALS_METHODDEF
     BUILTIN_HASATTR_METHODDEF
     BUILTIN_HASH_METHODDEF
     BUILTIN_HEX_METHODDEF
     BUILTIN_ID_METHODDEF
+    
     BUILTIN_INPUT_METHODDEF
+    BUILTIN_INPUT_METHODDEF_PT
+
     BUILTIN_ISINSTANCE_METHODDEF
+    BUILTIN_ISINSTANCE_METHODDEF_PT
+
     BUILTIN_ISSUBCLASS_METHODDEF
+    BUILTIN_ISSUBCLASS_METHODDEF_PT
+
     {"iter",            builtin_iter,       METH_VARARGS, iter_doc},
     BUILTIN_LEN_METHODDEF
+    BUILTIN_LEN_METHODDEF_PT
+
     BUILTIN_LOCALS_METHODDEF
     {"max",             (PyCFunction)builtin_max,        METH_VARARGS | METH_KEYWORDS, max_doc},
     {"min",             (PyCFunction)builtin_min,        METH_VARARGS | METH_KEYWORDS, min_doc},
     {"next",            (PyCFunction)builtin_next,       METH_FASTCALL, next_doc},
+    
     BUILTIN_OCT_METHODDEF
     BUILTIN_ORD_METHODDEF
     BUILTIN_POW_METHODDEF
+
     {"print",           (PyCFunction)builtin_print,      METH_FASTCALL | METH_KEYWORDS, print_doc},
+    {"imprima",           (PyCFunction)builtin_print,      METH_FASTCALL | METH_KEYWORDS, print_doc},
+    
     BUILTIN_REPR_METHODDEF
+    BUILTIN_REPR_METHODDEF_PT
+
     BUILTIN_ROUND_METHODDEF
+    BUILTIN_ROUND_METHODDEF_PT
+    
     BUILTIN_SETATTR_METHODDEF
+    BUILTIN_SETATTR_METHODDEF_PT
+
     BUILTIN_SORTED_METHODDEF
+    BUILTIN_SORTED_METHODDEF_PT
+
     BUILTIN_SUM_METHODDEF
+    BUILTIN_SUM_METHODDEF_PT
+
     {"vars",            builtin_vars,       METH_VARARGS, vars_doc},
     {NULL,              NULL},
 };
@@ -2853,6 +2899,31 @@ _PyBuiltin_Init(void)
     SETBUILTIN("tuple",                 &PyTuple_Type);
     SETBUILTIN("type",                  &PyType_Type);
     SETBUILTIN("zip",                   &PyZip_Type);
+
+    SETBUILTIN("Nada",                  Py_None);
+    SETBUILTIN("Falso",                 Py_False);
+    SETBUILTIN("Verdadeiro",            Py_True);
+    SETBUILTIN("booleano",                  &PyBool_Type);
+    SETBUILTIN("bytes",                 &PyBytes_Type);
+    SETBUILTIN("complexo",               &PyComplex_Type);
+    SETBUILTIN("dicionário",                  &PyDict_Type);
+    SETBUILTIN("enumere",             &PyEnum_Type);
+    SETBUILTIN("filtro",                &PyFilter_Type);
+    SETBUILTIN("flutuante",                 &PyFloat_Type);
+    SETBUILTIN("inteiro",                   &PyLong_Type);
+    SETBUILTIN("lista",                  &PyList_Type);
+    SETBUILTIN("mapa",                   &PyMap_Type);
+    SETBUILTIN("objeto",                &PyBaseObject_Type);
+    SETBUILTIN("intervalo",                 &PyRange_Type);
+    SETBUILTIN("reversedo",              &PyReversed_Type);
+    SETBUILTIN("conjunto",                   &PySet_Type);
+    SETBUILTIN("fatia",                 &PySlice_Type);
+    SETBUILTIN("super",                 &PySuper_Type);
+    SETBUILTIN("tupla",                 &PyTuple_Type);
+    SETBUILTIN("tipo",                  &PyType_Type);
+
+
+
     debug = PyBool_FromLong(Py_OptimizeFlag == 0);
     if (PyDict_SetItemString(dict, "__debug__", debug) < 0) {
         Py_DECREF(debug);
