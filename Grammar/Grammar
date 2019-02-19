@@ -64,7 +64,7 @@ import_as_names: import_as_name (',' import_as_name)* [',']
 dotted_as_names: dotted_as_name (',' dotted_as_name)*
 dotted_name: NAME ('.' NAME)*
 global_stmt: 'global' NAME (',' NAME)*
-nonlocal_stmt: 'nonlocal' NAME (',' NAME)*
+nonlocal_stmt: ('nonlocal'| "nãolocal" ) NAME (',' NAME)*
 assert_stmt: ('assert' | 'certifique') test [',' test]
 
 compound_stmt: if_stmt | while_stmt | for_stmt | try_stmt | with_stmt | funcdef | classdef | decorated | async_stmt
@@ -140,6 +140,7 @@ argument: ( test [comp_for] |
 
 comp_iter: comp_for | comp_if
 sync_comp_for: ('for' | 'para') exprlist ('in' | 'em' | 'no' ) or_test [comp_iter]
+
 comp_for: ['async'] sync_comp_for
 comp_if: ('if' | 'se') test_nocond [comp_iter]
 
